@@ -38,20 +38,7 @@ let $ = createSnippetWithJQuery(`
 
 const templateWithJQuery = () => {
   // Solution code here...
-  starWarsPeople.forEach(obj => {
-    //Get the destination
-    let $template = $('#template');
-    //Populate the cloned markup with data
-    let $new = $template.clone();
-    $new.removeAttr('#template');
-    $new.find('h2').text(obj.name);
-    $new.find('h3').text(obj.height);
-    $new.find('p').text(obj.eye_color);
-    // Append clone to the destination
-    $('section').append($new);
-    console.log(obj);
-  });
-};
+}
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 2
@@ -69,10 +56,6 @@ For example, if the input is 'Welcome', the output will be:
 const howMuchPencil = (str) => {
   let result = [];
   // Solution code here...
-  for (let i = 0; i < str.length; i++){
-    result.push(str.slice(i, str.length));
-  }
-  result.push('');
   return result;
 };
 
