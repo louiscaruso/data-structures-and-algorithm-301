@@ -10,12 +10,12 @@ Then, write a function named speaker that takes in a string and a callback funct
 
 const greeting = (word) => {
   // Solution code here...
- return word.toUpperCase(); 
+  return word.toUpperCase();
 };
 
 const speaker = (message, callback) => {
   // Solution code here...
- return callback(message);
+  return callback(message);
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -36,15 +36,13 @@ Return the modified array.
 
 const addValues = (arr, value) => {
   // Solution code here...
-  console.log(typeof value);
-  console.log(typeof arr);
   arr.push(value)
 };
 
 const addNumbers = (num, arr, times, callback) => {
   // Solution code here...
   for (let i = 0; i < times; i++) {
-    callback(arr, num); 
+    callback(arr, num);
   }
   return arr;
 };
@@ -71,7 +69,9 @@ const createList = (availableItems) => {
   // Solution code here...
   let output = [];
   availableItems.forEach(value => {
-    output.push(value.name)
+    if (value.available === true) {
+      output.push(value.name);
+    };
 
   });
   return output;
@@ -93,24 +93,14 @@ Return the resulting output array.
 
 const fizzbuzz = (arr) => {
   // Solution code here...
-  let output = [];
-  arr.forEach(value => {
-    if(value % 5 === 0 && value % 3 === 0){
-      output.push('Fizz Buzz');
-    }
-    else if(value % 3 === 0) {
-      output.push('Buzz');
-    }
-    else if (value % 5 === 0) {
-      output.push('Fizz');
-    }
-    else {
-      output.push(value);
-    }
-  })
-  return output;
+  arr.forEach((value, i) => {
+    if(value % 3 === 0 && value % 5 === 0){arr[i] = 'Fizz Buzz';}
+    else if (value % 3 === 0) {arr[i] = 'Fizz';}
+    else if (value % 5 === 0) {arr[i] = 'Buzz';}
+    else {arr[i] = value;}
+  });
+  return arr;
 };
-
 /* ------------------------------------------------------------------------------------------------
 TESTS
 
@@ -122,13 +112,13 @@ Run your tests from the console: jest challenges-01.test.js
 
 ------------------------------------------------------------------------------------------------ */
 
-xdescribe('Testing challenge 1', () => {
+describe('Testing challenge 1', () => {
   test('It should return the message with all uppercase characters', () => {
     expect(speaker('hello 301 students!', greeting)).toStrictEqual('HELLO 301 STUDENTS!');
   });
 });
 
-xdescribe('Testing challenge 2', () => {
+describe('Testing challenge 2', () => {
   test('It should add the number 8 to the array five times', () => {
     expect(addNumbers(8, [], 5, addValues)).toStrictEqual([8, 8, 8, 8, 8]);
     expect(addNumbers(8, [], 5, addValues).length).toStrictEqual(5);
