@@ -10,12 +10,12 @@ Then, write a function named speaker that takes in a string and a callback funct
 
 const greeting = (word) => {
   // Solution code here...
- return word.toUpperCase(); 
+  return word.toUpperCase();
 };
 
 const speaker = (message, callback) => {
   // Solution code here...
- return callback(message);
+  return callback(message);
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -36,18 +36,15 @@ Return the modified array.
 
 const addValues = (arr, value) => {
   // Solution code here...
-  console.log(typeof value);
-  console.log(typeof arr);
   arr.push(value)
 };
 
 const addNumbers = (num, arr, times, callback) => {
   // Solution code here...
   for (let i = 0; i < times; i++) {
-  
-
+    callback(arr, num);
   }
-  callback(arr, num);
+  return arr;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -70,6 +67,14 @@ This function should use forEach to populate your grocery list based on the stor
 
 const createList = (availableItems) => {
   // Solution code here...
+  let output = [];
+  availableItems.forEach(value => {
+    if (value.available === true) {
+      output.push(value.name);
+    };
+
+  });
+  return output;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -88,8 +93,14 @@ Return the resulting output array.
 
 const fizzbuzz = (arr) => {
   // Solution code here...
+  arr.forEach((value, i) => {
+    if(value % 3 === 0 && value % 5 === 0){arr[i] = 'Fizz Buzz';}
+    else if (value % 3 === 0) {arr[i] = 'Fizz';}
+    else if (value % 5 === 0) {arr[i] = 'Buzz';}
+    else {arr[i] = value;}
+  });
+  return arr;
 };
-
 /* ------------------------------------------------------------------------------------------------
 TESTS
 
@@ -114,7 +125,7 @@ describe('Testing challenge 2', () => {
   });
 });
 
-xdescribe('Testing challenge 3', () => {
+describe('Testing challenge 3', () => {
   const inventory = [{ name: 'apples', available: true }, { name: 'pears', available: true }, { name: 'oranges', available: false }, { name: 'bananas', available: true }, { name: 'blueberries', available: false }];
 
   test('It should only add the available items to the list', () => {
@@ -123,7 +134,7 @@ xdescribe('Testing challenge 3', () => {
   });
 });
 
-xdescribe('Testing challenge 4', () => {
+describe('Testing challenge 4', () => {
   const inputs = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16];
 
   test('It should print out messages or numbers', () => {
