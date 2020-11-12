@@ -70,22 +70,15 @@ let $ = createSnippetWithJQuery(`
 `);
 
 const templatingWithMustache = () => {
-  // Solution code here...
-  characters.forEach(obj => {
-    let templateObj = {
-      name: obj.name,
-      spouse: obj.spouse,
-      children: obj.children,
-      house: obj.house
-    };
-    // Get the template
-    let $template = $('#template').html();
-    // Populate with data
-    let rendered = Mustache.render($template, templateObj);
-    console.log(rendered);
-    return rendered;
+  let result = [];
+  let $template = $('#template').html();
+  characters.forEach(person => {;
+    let rendered = Mustache.render($template, person);
+    result.push(rendered);
   });
+  return result;
 };
+
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 2
@@ -94,25 +87,14 @@ Write a function named getCourseKeys that takes in the courseInfo object and ret
 
 For example: (['name', 'duration', 'topics', 'finalExam']).
 ------------------------------------------------------------------------------------------------ */
-const courseInfo = { name: 'Code 301', duration: { dayTrack: '4 weeks', eveningTrack: '8 weeks'},
-  topics: ['SMACSS', 'APIs', 'NodeJS', 'SQL', 'jQuery', 'functional programming'],
-  finalExam: true
-};
-
 const courseInfo = {
   name: 'Code 301', duration: { dayTrack: '4 weeks', eveningTrack: '8 weeks' },
   topics: ['SMACSS', 'APIs', 'NodeJS', 'SQL', 'jQuery', 'functional programming'],
   finalExam: true
 };
-const getCourseKeys = (obj) => {
-  // Solution code here...
-  obj.keys(courseInfo.forEach(obj => {
-    console.log(obj);
-    console.log(courseInfo);
-  }));
-};
-
+const getCourseKeys = obj => Object.keys(obj);
 /* ------------------------------------------------------------------------------------------------
+
 CHALLENGE 3
 
 Write a function named getHouses that returns a new array containing the names of all of the houses in the data set.
@@ -120,7 +102,9 @@ Write a function named getHouses that returns a new array containing the names o
 
 const getHouses = (arr) => {
   let houses = [];
-  // Solution code here...
+  for (let person in arr){
+    houses.push(arr[person].house);
+  }
   return houses;
 };
 
@@ -137,8 +121,11 @@ hasChildrenValues(characters, 'Sansa') will return false
 ------------------------------------------------------------------------------------------------ */
 
 const hasChildrenValues = (arr, character) => {
-  // Solution code here...
-
+  for (let person in arr){
+    if (arr[person].name === character){
+      return Object.values(arr[person].children).length > 0;
+    }
+  };
 };
 
 /* ------------------------------------------------------------------------------------------------
