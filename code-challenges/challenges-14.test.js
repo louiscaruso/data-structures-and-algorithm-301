@@ -39,13 +39,7 @@ For example, ['apple', 'banana', 'MacGyver'] returns ['Apple', 'Banana', 'MacGyv
 ------------------------------------------------------------------------------------------------ */
 
 const toTitleCase = (arr) => {
-  // Solution code here...
-  return arr.map(words => {
-    words.slice(0);
-    words.toUppercase();
-    console.log(words, '//words');
-    console.log(arr, '//array');
-  });
+  return arr.map(str => str.charAt(0).toUpperCase() + str.slice(1));
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -120,13 +114,10 @@ let starWarsData = [{
 }];
 
 let biggerThanLuke = (arr) => {
-  // Solution code here...
-  return arr.map(words => {
-    words.slice(0);
-    words.toUppercase();
-    console.log(words, '//words');
-    console.log(arr, '//array');
-  });
+  return arr
+    .filter(person => person.height > 172)
+    .map(person => person.name)
+    .join(' - ');
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -143,10 +134,7 @@ Here is an example of the input:
 This data could be sorted by name or price.
 ------------------------------------------------------------------------------------------------ */
 
-const sortBy = (property, arr) => {
-  // Solution code here...
-
-};
+const sortBy = (property, arr) => arr.sort((a, b) => a[property] > b[property] ? 1 : -1);
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 5 - Stretch Goal
