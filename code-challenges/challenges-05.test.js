@@ -36,22 +36,33 @@ let $ = createSnippetWithJQuery(`
 </main>
 `);
 
+// const templateWithJQuery = () => {
+//   // Solution code here...
+//   starWarsPeople.forEach(obj => {
+//     //Get the destination
+//     let $template = $('#template');
+//     //Populate the cloned markup with data
+//     let $new = $template.clone();
+//     $new.removeAttr('#template');
+//     $new.find('h2').text(obj.name);
+//     $new.find('h3').text(obj.height);
+//     $new.find('p').text(obj.eye_color);
+//     // Append clone to the destination
+//     $('section').append($new);
+//     console.log(obj);
+//   });
+// };
+
 const templateWithJQuery = () => {
-  // Solution code here...
-  starWarsPeople.forEach(obj => {
-    //Get the destination
-    let $template = $('#template');
-    //Populate the cloned markup with data
-    let $new = $template.clone();
-    $new.removeAttr('#template');
-    $new.find('h2').text(obj.name);
-    $new.find('h3').text(obj.height);
-    $new.find('p').text(obj.eye_color);
-    // Append clone to the destination
-    $('section').append($new);
-    console.log(obj);
+  const $template = $('#template').clone();
+  starWarsPeople.forEach(person => {
+    let $person = $template.clone();
+    $person.find('h2').text(person.name);
+    $person.find('h3').text(person.height);
+    $person.find('p').text(person.eye_color);
+    $('main').append($person);
   });
-};
+}
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 2
